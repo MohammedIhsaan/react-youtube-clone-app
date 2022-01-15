@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FaBeer } from 'react-icons/fa';
+import { AiFillHome,AiOutlineLike } from 'react-icons/ai';
+import { MdOutlineExplore,MdOutlineSubscriptions,
+    MdOutlineVideoLibrary,MdOutlineHistory,MdOutlineWatchLater } from 'react-icons/md';
 
 const Container = styled.div`
-background-color: lightsalmon;
+background-color: #212121;
+color: white;
 flex: 1;
 display: flex;
 align-items: center;
@@ -14,7 +17,7 @@ const SideIcon = styled.div`
 width: 100%;
 display: flex;
 align-items: center;
-justify-content: space-around;
+justify-content: center;
 padding: 10px;
 cursor: pointer;
 :hover{
@@ -23,64 +26,68 @@ cursor: pointer;
 `
 const Icon = styled.div`
 flex: 1;
-padding-left: 10px;
+padding-left: 15px;
+font-size: 24px;
 `
 
 const Span = styled.div`
-flex: 2;
+flex: 3;
+font-size: 18px;
 
 `
-
-// const Container = styled.div``
+const Heading = styled.div`
+padding-top: 15px;
+`
+const Thumb = styled.div`
+width: 25px;
+height: 25px;
+border-radius: 50%;
+background-color: red;
+`
+const Line = styled.hr`
+background-color: #3d3d3d;
+/* border: 0.1px solid lightgray; */
+height: 1px;
+border: none;
+width: 100%;
+`
 
 
 export default function SideBar() {
     return (
         <Container>
             <SideIcon>
-                <Icon><FaBeer/></Icon>
+                <Icon><AiFillHome/></Icon>
                 <Span>Home</Span>
             </SideIcon>
             <SideIcon>
-                <Icon>1</Icon>
+                <Icon><MdOutlineExplore/></Icon>
+                <Span>Explore</Span>
+            </SideIcon>
+            <SideIcon>
+                <Icon><MdOutlineSubscriptions/></Icon>
                 <Span>Subscription</Span>
             </SideIcon>
+            <Line/>
             <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
+                <Icon><MdOutlineVideoLibrary/></Icon>
+                <Span>Library</Span>
             </SideIcon>
             <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
+                <Icon><MdOutlineHistory/></Icon>
+                <Span>History</Span>
             </SideIcon>
             <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
+                <Icon><MdOutlineWatchLater/></Icon>
+                <Span>Watch Later</Span>
             </SideIcon>
             <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
+                <Icon><AiOutlineLike/></Icon>
+                <Span>Liked Videos</Span>
             </SideIcon>
-            <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
-            </SideIcon>
-            <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
-            </SideIcon>
-            <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
-            </SideIcon>
-            <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
-            </SideIcon>
-            <SideIcon>
-                <Icon>1</Icon>
-                <Span>Home</Span>
-            </SideIcon>
+            <Line/>
+            <Heading>SUBSCRIPTIONS</Heading>
+           
         </Container>
     )
 }
