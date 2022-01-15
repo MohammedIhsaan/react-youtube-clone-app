@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/react-youtube-clone-app/static/js/main.7a65c0bc.js",
+    "static/media/ihsaan.jpeg": "/react-youtube-clone-app/static/media/ihsaan.e5a342c7cd2ddfd0fbb6.jpeg",
+    "static/media/youtube1.png": "/react-youtube-clone-app/static/media/youtube1.220a460667cc11846bad.png",
+    "index.html": "/react-youtube-clone-app/index.html",
+    "main.7a65c0bc.js.map": "/react-youtube-clone-app/static/js/main.7a65c0bc.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.7a65c0bc.js"
+  ]
+}
