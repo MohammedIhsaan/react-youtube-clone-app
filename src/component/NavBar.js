@@ -148,13 +148,16 @@ height: 35px;
 border-radius: 50%;
 `
 
-export default function NavBar(  ) {
+export default function NavBar({handleValue}  ) {
     
+    const handleClick = ()=>{
+        handleValue()
+    }
 
     return (
         <Container>
             <LeftContainer>
-                <Humberger><AiOutlineMenu/></Humberger>
+                <Humberger onClick={handleClick}><AiOutlineMenu/></Humberger>
                 <YoutubeIcon>
                 <Icon src={youtubeImg}/>             
                 <Logo>

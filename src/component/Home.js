@@ -8,11 +8,11 @@ display: flex;
 `
 
 
-export default function Home() {
+export default function Home({value}) {
     return (
         <Container>
-            <SideBar/>
-            <VideoList/>
+            <SideBar value={value}/>
+            <VideoList value={value}/>
         </Container>
     )
 }
