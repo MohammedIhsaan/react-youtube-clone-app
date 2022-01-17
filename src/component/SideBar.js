@@ -15,41 +15,44 @@ display: flex;
 flex-direction: column;
 height: 100vh;
 transition: 1s ease-in-out all;
-position: fixed;
 z-index: 999;
 ${Medium({
+    position:'fixed',
     transform : ( props ) => props.type ? 'translateX(0)' : 'translateX(-100%)',
 })}
 
 `
 const SideWrapper = styled.div`
-display: flex;
+display: ${props=>props.type==='expand'? 'none':'flex'};
 flex-direction: column;
 `
 
-const SideIcon = styled.div`
+const SideIcon  = styled.div`
 width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 10px;
 cursor: pointer;
 :hover{
     background-color: lightseagreen,
 }
+flex-direction: ${props=>props.type==='expand'? 'column':'row'};
+padding: ${props=>props.type==='expand'? '20px 0px ':'10px 10px'};
+
 `
 const Icon = styled.div`
 flex: 1;
 padding-left: 15px;
-font-size: 24px;
+padding-left: ${props=>props.type==='expand'? '0px ':'15px'};
+font-size: ${props=>props.type==='expand'? '25px':'24px'};
 `
 
 const Span = styled.div`
 flex: 3;
-font-size: 18px;
-/* display:none; */
-padding-right: 50px;
-padding-left: 20px;
+font-size: ${props=>props.type==='expand'? '10px':'18px'};
+padding-left: ${props=>props.type==='expand'? '10px ':'20px'};
+padding-right: ${props=>props.type==='expand'? '10px':'50px'};
+
 
 `
 const Heading = styled.div`
@@ -65,27 +68,29 @@ width: 100%;
 `
 
 
-export default function SideBar({value}) {
+export default function SideBar({value,signal}) {
 
-    // let value = true
+    // let signal = 'expand'
+    // let signal = 'expand'
     return (
-        <Container type={value}>
-            <SideWrapper>
-            <SideIcon>
-                <Icon><AiFillHome/></Icon>
-                <Span>Home</Span>
+        <Container type={value} >
+            <SideWrapper >
+                {/* <Wrap></Wrap> */}
+            <SideIcon type={signal}>
+                <Icon type={signal}><AiFillHome/></Icon>
+                <Span type={signal}>Home</Span>
             </SideIcon>
-            <SideIcon>
-                <Icon><MdOutlineExplore/></Icon>
-                <Span>Explore</Span>
+            <SideIcon type={signal}>
+                <Icon type={signal}><MdOutlineExplore/></Icon>
+                <Span type={signal}>Explore</Span>
             </SideIcon>
-            <SideIcon>
-                <Icon><MdOutlineSubscriptions/></Icon>
-                <Span>Subscription</Span>
+            <SideIcon type={signal}>
+                <Icon type={signal}><MdOutlineSubscriptions/></Icon>
+                <Span type={signal}>Subscription</Span>
             </SideIcon>
             </SideWrapper>
             <Line/>
-            <SideWrapper>
+            <SideWrapper type={signal}>
 
             <SideIcon>
                 <Icon><MdOutlineVideoLibrary/></Icon>
