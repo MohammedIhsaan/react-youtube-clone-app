@@ -52,14 +52,20 @@ font-size: 18px;
 }
 `
 const Span = styled.span`
+cursor: pointer;
 height: 100%;
 padding: 5px 10px;
-border: 1px solid black;
+border: 1px solid #3d3d3d;
 border-radius: 999px;
 margin-right:10px;
 white-space: nowrap;
-background-color: ${props=> props.type? 'red':'black'};
+background-color: ${props=> props.type? 'red':'#3d3d3d'};
+// font-weight: 100;
+:hover{
+    background-color: lightslategrey;
+}
 `
+
 
 
 export default function KeywordBar() {
