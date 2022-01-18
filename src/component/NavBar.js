@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useContext, useState} from 'react'
 import styled from 'styled-components'
 import youtubeImg from '../images/youtube1.png'
 import myImg from '../images/ihsaan.jpeg'
@@ -7,6 +7,7 @@ import { BsFillMicFill } from 'react-icons/bs';
 import { BiVideoPlus } from 'react-icons/bi';
 import { MdApps,MdOutlineNotificationsNone } from 'react-icons/md';
 import { Medium, Mobile, Tablet } from '../reponsive';
+import { AppContext } from '../App';
 
 
 const Container = styled.div`
@@ -33,7 +34,9 @@ ${Mobile({
 })}
 `
 const Humberger= styled.div`
+padding-left: 15px;
 cursor: pointer;
+font-size: 24px;
 ${Mobile({
     display:'none'
 })}
@@ -43,7 +46,7 @@ ${Mobile({
 const YoutubeIcon= styled.div`
 display: flex;
 align-items: center;
-padding-left:20px;
+padding-left:30px;
 
 ${Mobile({
     paddingLeft:'5px'
@@ -51,7 +54,7 @@ ${Mobile({
 `
 
 const Icon = styled.img`
-height: 4vh;
+height: 24px;
 ${Mobile({
     height:'10px'
 })}
@@ -148,8 +151,9 @@ height: 35px;
 border-radius: 50%;
 `
 
-export default function NavBar({handleValue}  ) {
+export default function NavBar( ) {
     
+    const {handleValue} = useContext(AppContext)
     const handleClick = ()=>{
         handleValue()
     }

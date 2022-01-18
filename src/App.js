@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import styled from "styled-components";
 import Home from "./component/Home";
 import NavBar from "./component/NavBar";
 
 const Container = styled.div``
+export const AppContext = createContext(null)
 
 function App() {
-  const [value, setvalue] = useState(true)
+  const [value, setvalue] = useState('fullSideBar')
   const [signal, setsignal] = useState('expand')
 
   const handleValue = ()=> {
@@ -15,14 +16,22 @@ function App() {
     }else{
       setsignal('expand')
     }
-    setvalue(!value)
+    if(signal==='expand'){
+      setvalue('')
+    }else{
+    setvalue('fullSideBar')
+      
+    }
   }
-console.log(signal)
+
   return (  
-    <Container>
-      <NavBar handleValue={handleValue}/>
-      <Home value={value} signal={signal}/>
-    </Container>
+    <AppContext.Provider value={{value,signal,handleValue}} >
+
+      <Container>
+        <NavBar />
+        <Home/>
+      </Container>
+    </AppContext.Provider>
     
   );
 }

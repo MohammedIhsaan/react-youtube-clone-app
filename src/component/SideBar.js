@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { AiFillHome,AiOutlineLike } from 'react-icons/ai';
 import { MdOutlineExplore,MdOutlineSubscriptions,
     MdOutlineVideoLibrary,MdOutlineHistory,MdOutlineWatchLater } from 'react-icons/md';
 import { Medium } from '../reponsive';
+import { AppContext } from '../App';
 
 
 const Container = styled.div`
@@ -18,7 +19,7 @@ transition: 1s ease-in-out all;
 z-index: 999;
 ${Medium({
     position:'fixed',
-    transform : ( props ) => props.type ? 'translateX(0)' : 'translateX(-100%)',
+    transform : ( props ) => props.type==='fullSideBar' ? 'translateX(0)' : 'translateX(-100%)',
 })}
 
 `
@@ -68,10 +69,10 @@ width: 100%;
 `
 
 
-export default function SideBar({value,signal}) {
+export default function SideBar() {
 
-    // let signal = 'expand'
-    // let signal = 'expand'
+    const {value,signal} = useContext(AppContext)
+
     return (
         <Container type={value} >
             <SideWrapper >

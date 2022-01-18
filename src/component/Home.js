@@ -8,12 +8,12 @@ display: flex;
 `
 
 
-export default function Home({value,signal}) {
-   console.log('signal :',signal)
+export default function Home() {
+  
     return (
         <Container>
-            <SideBar value={value} signal={signal} />
-            <VideoList value={value} />
+            <SideBar  />
+            <VideoList  />
         </Container>
     )
 }
