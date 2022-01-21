@@ -2,11 +2,11 @@ import React , {useContext, useState} from 'react'
 import styled from 'styled-components'
 import youtubeImg from '../images/youtube1.png'
 import myImg from '../images/ihsaan.jpeg'
-import { AiOutlineMenu,AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineMenu,AiOutlineSearch,AiOutlineArrowLeft } from 'react-icons/ai';
 import { BsFillMicFill } from 'react-icons/bs';
 import { BiVideoPlus } from 'react-icons/bi';
 import { MdApps,MdOutlineNotificationsNone } from 'react-icons/md';
-import { Medium, Mobile, Tablet } from '../reponsive';
+import { Medium, Medium1, Mobile, SmallMobile, Tablet, Tablet1 } from '../reponsive';
 import { AppContext } from '../App';
 
 
@@ -22,16 +22,23 @@ ${Mobile({
     justifyContent:'center'
 })}
 
+
 `
 const LeftContainer = styled.div`
 flex: 1;
-display: flex;
+display: ${props=>props.type==='view'?'none':'flex'};
 align-items: center;
 padding-left:20px;
 padding-right: 20px;
 ${Mobile({
     padding:'0',
+    flex:'8'
 })}
+${SmallMobile({
+    padding:'0',
+    flex:'4'
+})}
+
 `
 const Humberger= styled.div`
 padding-left: 15px;
@@ -56,14 +63,14 @@ ${Mobile({
 const Icon = styled.img`
 height: 24px;
 ${Mobile({
-    height:'10px'
+    height:'11px'
 })}
 `
 const Logo = styled.div`
 font-size: 24px;
 
 ${Mobile({
-    fontSize:'12px'
+    fontSize:'14px'
 })}
 `
 const MiddleContainer = styled.div`
@@ -72,24 +79,40 @@ color: lightgray;
 width: 10px;
 display: flex;
 align-items: center;
-${Mobile({
-    flex:'0.5'
+${Medium1({
+    flex:'2'
 })}
-`
+${Tablet1({
+    flex:'1'
+})}
 
+
+`
+const Arrow = styled.div`
+display: none;
+${Mobile({
+    display: props=>props.type==='view'? 'flex':'none',
+})}
+color: white;
+`
 const SearchBox = styled.div`
 background-color: #3d3d3d;
 display: flex;
 align-items: center;
 height: 38px;
 padding: 0 10px;
-margin-right: 20px;
+margin-right: 60px;
 font-size: 24px;
 ${Mobile({
-    fontSize:'12px',
+    fontSize:'18px',
     height:'22px',
-    backgroundColor:'inherit'
+    backgroundColor:'inherit',
+    marginRight: props=>props.type==='view' || '20px',
 })}
+${Medium1({ 
+    marginRight:  '5px',
+})}
+
 
 `
 const Circle = styled.div`
@@ -102,7 +125,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 ${Mobile({
-    display:'none'
+    display: 'none',
 })}
 `
 const Input = styled.input`
@@ -112,36 +135,52 @@ border: none;
 background-color: #181818;
 width:70%;
 color: white;
-padding-left: 15px;
 ${Medium({
     width:'50%'
 })}
 ${Tablet({
     display:'none'
 })}
+${Mobile({
+    display: props=> props.type==='hide'? 'none' :'flex',
+    width: '100%',
+    height: '24px',
+})}
 
 `
 const RightContainer = styled.div`
 flex: 1;
+display: ${props=>props.type==='view' &&'none'};
 
 `
 const UserIcons = styled.div`
 display: flex;
 align-items: center;
-justify-content: center;
 `
 const IconWrapper = styled.div`
-flex: 3;
+font-size: 24px;
+flex: 2;
 display: flex;
-align-items: flex-end;
-/* float: right; */
-justify-content: space-around;
-${Mobile({
+`
+const IconWrap= styled.div`
+margin-left: 30px;
+${Tablet({
+    marginLeft:'10px'
+})}
+${Tablet1({
     display:'none'
 })}
+
 `
+
 const Avatar = styled.div`
 flex: 1;
+padding-left: 20px;
+${Mobile({
+    display:'flex',
+alignItems: 'center',
+marginRight:'20px'
+})}
 
 `
 
@@ -149,18 +188,29 @@ const Image = styled.img`
 width: 35px;
 height: 35px;
 border-radius: 50%;
+${Mobile({
+    width:'24px',
+    height:'24px',
+})}
 `
 
 export default function NavBar( ) {
-    
+    const [inputDiv, setinputDiv] = useState('hide')
     const {handleValue} = useContext(AppContext)
     const handleClick = ()=>{
         handleValue()
     }
-
+    const handleInput = ()=>{
+        if(window.innerWidth<420){
+            setinputDiv('view')
+        }
+    }
+    const hideInput = ()=>{
+        setinputDiv('hide')
+    }
     return (
         <Container>
-            <LeftContainer>
+            <LeftContainer type={inputDiv}>
                 <Humberger onClick={handleClick}><AiOutlineMenu/></Humberger>
                 <YoutubeIcon>
                 <Icon src={youtubeImg}/>             
@@ -169,22 +219,34 @@ export default function NavBar( ) {
                 </Logo>
                 </YoutubeIcon>
                 </LeftContainer>
-            <MiddleContainer>
-                <Input  placeholder='Search' />
+            <MiddleContainer type={inputDiv}>
+                <Arrow type={inputDiv}>
+                    <AiOutlineArrowLeft onClick={hideInput}/>
+                </Arrow>
+                <Input type={inputDiv}  placeholder='Search' />
                 <SearchBox>
-                <AiOutlineSearch />
+                <AiOutlineSearch onClick={handleInput}  />
                 </SearchBox>
                 <Circle>
 
                 <BsFillMicFill/>
                 </Circle>
             </MiddleContainer>
-            <RightContainer>
+            <RightContainer type={inputDiv}>
                 <UserIcons>
                     <IconWrapper>
-                    <BiVideoPlus style={{fontSize:'25px'}}/>
-                    <MdApps style={{fontSize:'25px'}}/>
-                    <MdOutlineNotificationsNone style={{fontSize:'25px'}}/>
+                        <IconWrap>
+                            
+                    <BiVideoPlus />
+                        </IconWrap>
+                        <IconWrap>
+                    <MdApps />
+
+                        </IconWrap>
+                        <IconWrap>
+                    <MdOutlineNotificationsNone />
+
+                        </IconWrap>
                     </IconWrapper>
                     <Avatar>
 
