@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { AiFillHome,AiOutlineLike } from 'react-icons/ai';
 import { MdOutlineExplore,MdOutlineSubscriptions,
     MdOutlineVideoLibrary,MdOutlineHistory,MdOutlineWatchLater } from 'react-icons/md';
-import { Medium } from '../reponsive';
+import { Medium, Mobile } from '../reponsive';
 import { AppContext } from '../App';
 
 
@@ -17,10 +17,16 @@ flex-direction: column;
 height: 100vh;
 transition: 1s ease-in-out all;
 z-index: 999;
+/* position: fixed; */
 ${Medium({
-    position:'fixed',
-    transform : ( props ) => props.type==='fullSideBar' ? 'translateX(0)' : 'translateX(-100%)',
+    // position:'fixed',
+    // transform : ( props ) => props.type==='fullSideBar' ? 'translateX(0)' : 'translateX(-100%)',
+    // transform : ( props ) => props.type==='fullSideBar' ? 'translateX(-100%)' : 'translateX(0)',
 })}
+${Mobile({
+    display:'none'
+})}
+
 
 `
 const SideWrapper = styled.div`
