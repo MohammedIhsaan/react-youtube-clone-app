@@ -17,7 +17,7 @@ function App() {
       setsignal('expand')
     }
     if(signal==='expand'){
-      setvalue('')
+      setvalue('halfSideBar')
     }else{
     setvalue('fullSideBar')
       
