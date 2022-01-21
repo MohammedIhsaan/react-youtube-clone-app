@@ -13,7 +13,12 @@ width:${props=>props.type==='halfSideBar'? '91%': '93%'};
 ${Medium({
     width: props=>props.type==='halfSideBar'? '86%': '90%'
 
+})};
+${Mobile({
+    width: '100%',
+
 })}
+
 `
 const Wrap = styled.div`
 display: flex;
@@ -24,7 +29,11 @@ width:${props=>props.type==='halfSideBar'? '95%': '95%'};
 padding-top: 30px;
 padding-left: 30px;
 
-
+${Mobile({
+    paddingLeft: '0px',
+    width: '100%',
+    height: '69vh',
+})}
 
 `
 const Wrapper = styled.div`
@@ -42,9 +51,9 @@ ${Medium1({
 ${Tablet({
     width:'90%',
 })}
-/* ${Mobile({
-    width:'90%',
-})} */
+${Mobile({
+    width:'100%',
+})}
 
 `
 const Thumbnail = styled.div`
