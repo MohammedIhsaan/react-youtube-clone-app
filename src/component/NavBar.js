@@ -1,4 +1,4 @@
-import React , {useContext, useState} from 'react'
+import React , {useContext, useRef, useState} from 'react'
 import styled from 'styled-components'
 import youtubeImg from '../images/youtube1.png'
 import myImg from '../images/ihsaan.jpeg'
@@ -8,6 +8,7 @@ import { BiVideoPlus } from 'react-icons/bi';
 import { MdApps,MdOutlineNotificationsNone } from 'react-icons/md';
 import { Medium, Medium1, Mobile, SmallMobile, Tablet, Tablet1 } from '../reponsive';
 import { AppContext } from '../App';
+import axios from 'axios';
 
 
 const Container = styled.div`
@@ -199,14 +200,40 @@ ${Mobile({
 
 export default function NavBar( ) {
     const [inputDiv, setinputDiv] = useState('hide')
-    const {handleValue} = useContext(AppContext)
+    const {handleValue,dispatch} = useContext(AppContext)
+
+    const searchQuery = useRef()
     const handleClick = ()=>{
         handleValue()
     }
+
+    const YOUTUBE_PLAYLIST_ITEMS_API = 'https://www.googleapis.com/youtube/v3/search?'
+    const youtubeApi = process.env.REACT_APP_YOUTUBE_API
+    
+    const datafromApi = async()=>{
+        console.log('callig api from search')
+        const response =   await axios 
+             .get(`${YOUTUBE_PLAYLIST_ITEMS_API}`+ new URLSearchParams({
+              key : youtubeApi,
+              part : 'snippet',
+              q : searchQuery.current.value,
+              maxResults: 50,}))
+              .catch(err=> console.log('err',err))
+              const dataArr = response.data
+              console.log('response',dataArr)
+              dispatch({
+                  type:'fetchData',
+                  payload : dataArr
+              })
+            }
+
     const handleInput = ()=>{
         if(window.innerWidth<420){
             setinputDiv('view')
         }
+        console.log('searchQuery  :' ,searchQuery.current.value)
+        datafromApi()
+        
     }
     const hideInput = ()=>{
         setinputDiv('hide')
@@ -226,7 +253,7 @@ export default function NavBar( ) {
                 <Arrow type={inputDiv}>
                     <AiOutlineArrowLeft onClick={hideInput}/>
                 </Arrow>
-                <Input type={inputDiv}  placeholder='Search' />
+                <Input type={inputDiv}  placeholder='Search' ref={searchQuery} />
                 <SearchBox>
                 <AiOutlineSearch onClick={handleInput}  />
                 </SearchBox>

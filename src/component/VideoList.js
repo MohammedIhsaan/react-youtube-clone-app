@@ -43,6 +43,7 @@ const Wrapper = styled.div`
 margin-bottom: 10px;
 border: 1px solid white;
 width: 24%;
+height: 250px;
 ${Medium({
     width:'32%',
 })}
@@ -54,6 +55,7 @@ ${Tablet({
 })}
 ${Mobile({
     width:'100%',
+    height:'300px',
 })}
 
 `
@@ -111,6 +113,7 @@ overflow: hidden;
 `
 const Title = styled.div``
 const ChannelName = styled.div`
+font-size: 14px;
 padding-right: 5px;
 `
 const ChannelDiv = styled.div`
@@ -118,16 +121,18 @@ color: lightgrey;
 display: flex;
 font-weight: 100;
 `
-const Views = styled.div``
+const Views = styled.div`
+font-size: 14px;
+`
 
 export default function VideoList() {
-    const {value,data2}=useContext(AppContext)
-    console.log('data2 ......',data2.items)
+    const {value,state}=useContext(AppContext)
+    console.log('state ......',state?.items)
     return (
         <Container type={value}>
             <KeywordBar />
             <Wrap type={value}>
-                {data2.items.map((e,i)=>{
+                {state?.items?.map((e,i)=>{
                    return(
                         <Wrapper key={i}>
                    <Thumbnail>
