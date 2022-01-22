@@ -5,8 +5,9 @@ import { Mobile } from '../reponsive';
 
 const Container = styled.div`
 display: none;
-/* position: sticky; */
+position: absolute;
 background-color: #181818;
+bottom: 0;
 color: white;
 font-size: 18px;
 align-items: center;

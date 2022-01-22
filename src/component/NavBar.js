@@ -18,7 +18,7 @@ height: 50px;
 align-items: center;
 justify-content: space-between;
 ${Mobile({
-    height:'30px',
+    height:'40px',
     justifyContent:'center'
 })}
 
@@ -63,14 +63,14 @@ ${Mobile({
 const Icon = styled.img`
 height: 24px;
 ${Mobile({
-    height:'11px'
+    height:'15px'
 })}
 `
 const Logo = styled.div`
 font-size: 24px;
 
 ${Mobile({
-    fontSize:'14px'
+    fontSize:'19px'
 })}
 `
 const MiddleContainer = styled.div`
@@ -90,8 +90,11 @@ ${Tablet1({
 `
 const Arrow = styled.div`
 display: none;
+padding-left: 8px;
+padding-right: 8px;
 ${Mobile({
     display: props=>props.type==='view'? 'flex':'none',
+    fontSize:'20px',
 })}
 color: white;
 `
@@ -104,8 +107,8 @@ padding: 0 10px;
 margin-right: 60px;
 font-size: 24px;
 ${Mobile({
-    fontSize:'18px',
-    height:'22px',
+    fontSize:'21px',
+    height:'26px',
     backgroundColor:'inherit',
     marginRight: props=>props.type==='view' || '20px',
 })}
@@ -144,7 +147,7 @@ ${Tablet({
 ${Mobile({
     display: props=> props.type==='hide'? 'none' :'flex',
     width: '100%',
-    height: '24px',
+    height: '35px',
 })}
 
 `
