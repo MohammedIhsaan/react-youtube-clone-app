@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/react-youtube-clone-app/static/js/main.d1ae10ff.js",
+    "main.js": "/react-youtube-clone-app/static/js/main.9f46df20.js",
     "static/media/ihsaan.jpeg": "/react-youtube-clone-app/static/media/ihsaan.e5a342c7cd2ddfd0fbb6.jpeg",
     "static/media/youtube1.png": "/react-youtube-clone-app/static/media/youtube1.220a460667cc11846bad.png",
     "index.html": "/react-youtube-clone-app/index.html",
-    "main.d1ae10ff.js.map": "/react-youtube-clone-app/static/js/main.d1ae10ff.js.map"
+    "main.9f46df20.js.map": "/react-youtube-clone-app/static/js/main.9f46df20.js.map"
   },
   "entrypoints": [
-    "static/js/main.d1ae10ff.js"
+    "static/js/main.9f46df20.js"
   ]
 }
