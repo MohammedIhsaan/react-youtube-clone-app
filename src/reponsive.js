@@ -2,7 +2,7 @@ import { css } from "styled-components"
 
 export const Medium =(props)=>{
     return css`
-    @media only screen and (max-width:950px){
+    @media only screen and (max-width:1000px){
         ${props}
     }
     `
